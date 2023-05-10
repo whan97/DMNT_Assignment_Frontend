@@ -1,0 +1,46 @@
+
+<div class="custom-container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-12">
+        <form [formGroup]="loginForm" *ngIf="loginForm" (ngSubmit)="onSubmit()">
+            <div class="row mb-3">
+                <div class="col">
+                    
+                        <label for="usernameInput" class="form-label">Username</label>
+                        <input type="text" class="form-control w-100" id="usernameInput" placeholder="JohnDoe22"
+                            formControlName="username">
+                        <span class="text-danger" *ngIf="loginForm.controls['username']?.hasError('required')">Cannot be
+                            empty</span>
+                
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control w-100" id="password" placeholder="*****"
+                    formControlName="password">
+
+                <div class="text-danger" *ngIf="loginForm.get('password')?.hasError('required')">
+                    Please enter a password
+                </div>
+                <div class="text-danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
+                    Password must be at least 8 characters long
+                </div>
+                <div class="text-danger" *ngIf="loginForm.get('password')?.hasError('pattern')">
+                    Password must contain at least one uppercase letter, one lowercase letter, one number and one
+                    special character
+                </div>
+            </div>
+    
+            <button class="button" type="submit">Login</button>
+    
+        </form>
+        
+      </div>
+    </div>
+  </div>
+    
+   
+
+
+  
