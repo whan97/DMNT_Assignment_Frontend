@@ -33,7 +33,7 @@ export class LoginFormComponent implements OnInit {
   form() { return this.loginForm?.controls}
 
   redirectToPage(): void {
-    this.router.navigate(['/users-display']);  // Replace 'target-page' with the actual path of the page you want to navigate to
+    this.router.navigate(['users/display']); 
   }
   
   onSubmit(){
@@ -46,8 +46,8 @@ export class LoginFormComponent implements OnInit {
     this.apiCallService.postValue(postValues)
       .pipe(
         tap((result: any) => {
-          console.log(typeof result, result)
           localStorage.setItem("token", result.token)
+          this.router.navigate(['/users/display']); 
         })
       )
     .subscribe({error:(() => console.log('test'))})
